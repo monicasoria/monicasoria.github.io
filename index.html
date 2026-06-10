@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monica Soria — Climate &amp; Energy Finance</title>
-<meta name="description" content="Monica Soria — Climate &amp; Energy Finance professional. 9+ years in structured finance, sovereign debt, and climate finance across three continents.Available for new roles starting September 2026.">
+<meta name="description" content="Monica Soria — Climate &amp; Energy Finance professional. 9+ years in structured finance, sovereign debt, and climate finance across three continents.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -197,11 +197,17 @@
   }
   .hero-grid{
     display:grid;
-    grid-template-columns: 1fr;
-    gap:60px;
-    align-items:center;
+    grid-template-columns: 200px 1fr;
+    gap:56px;
+    align-items:start;
     width:100%;
-    max-width:820px;
+    max-width:860px;
+  }
+  .hero-photo-col {
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding-top: 8px;
   }
   .hero-eyebrow{
     font-size:13px;
@@ -870,8 +876,9 @@
 
     .hero-grid{
       grid-template-columns:1fr;
-      gap:40px;
+      gap:32px;
     }
+    .hero-photo-col{ justify-content:flex-start; }
     .hero h1{ font-size:clamp(44px, 14vw, 80px); }
 
     .about-grid{ grid-template-columns:1fr; gap:48px; }
@@ -887,6 +894,39 @@
     .deal-amount{ font-size:48px; }
 
     footer{ flex-direction:column; gap:8px; }
+  }
+
+  /* ===== Profile photo circle ===== */
+  .profile-photo-wrap {
+    opacity: 0;
+    animation: fade-up .9s ease 1.6s forwards;
+  }
+  .profile-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--c-5);
+    cursor: grab;
+    position: relative;
+    user-select: none;
+  }
+  .profile-circle:active { cursor: grabbing; }
+  .profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    pointer-events: none;
+    display: block;
+    transform-origin: center center;
+  }
+  .profile-circle-hint {
+    font-size: 11px;
+    letter-spacing: .08em;
+    color: var(--c-4);
+    margin-top: 8px;
+    text-transform: uppercase;
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -929,6 +969,18 @@
 <section class="hero" id="top">
   <div class="wrap">
     <div class="hero-grid">
+
+      <!-- Photo column -->
+      <div class="hero-photo-col">
+        <div class="profile-photo-wrap">
+          <div class="profile-circle" id="profileCircle">
+            <img src="photo-formal.jpeg" alt="Monica Soria" id="profileImg" draggable="false">
+          </div>
+          <p class="profile-circle-hint" id="profileHint">Drag to reposition · scroll to zoom</p>
+        </div>
+      </div>
+
+      <!-- Text column -->
       <div>
         <p class="hero-eyebrow"><span>Climate &amp; Energy Finance · New York</span></p>
         <h1>
@@ -963,6 +1015,7 @@
           <a href="blog.html" class="btn">Blog ↗</a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -977,7 +1030,7 @@
       <div>
         <p class="about-lead reveal">Finance professional at the intersection of capital markets, climate, and clean energy.</p>
         <div class="about-body">
-          <p class="reveal reveal-delay-1">My career spans investment banking, transfer pricing at KPMG, and six years at The Nature Conservancy — first in financial planning and analysis, then leading the financial modeling of landmark sovereign blended finance transactions, including three debt-for-nature conversions totaling over $1.6B across Ecuador, Gabon, and Barbados.</p>
+          <p class="reveal reveal-delay-1">My career spans investment banking, transfer pricing at KPMG, and six years at The Nature Conservancy — first in fund accounting and financial planning, then leading the execution of landmark sovereign blended finance transactions, including three debt-for-nature conversions totaling over $1.6B across Ecuador, Gabon, and Barbados.</p>
           <p class="reveal reveal-delay-2">I am completing an M.Sc. in Climate Finance (STEM) at Columbia University's Climate School, with 50% of coursework at Columbia Business School. My research examines the 1993–2013 U.S.-Russia nuclear disarmament-to-energy program and its implications for nuclear power in the energy transition.</p>
           <p class="reveal reveal-delay-3">I bring together deep financial modeling expertise — SPV structures, project finance, debt structuring — with fluency in Python, SQL, and Bloomberg, and a track record of coordinating across sovereigns, multilaterals, and commercial lenders from mandate through close.</p>
         </div>
@@ -1001,7 +1054,7 @@
         </div>
         <div class="detail-row">
           <div class="detail-label">Current Role</div>
-          <div class="detail-value">Business Development Intern · Fast Metals Inc.</div>
+          <div class="detail-value">Business Development Intern · FAST Metals Inc.</div>
         </div>
         <div class="detail-row">
           <div class="detail-label">CFA Institute</div>
@@ -1025,7 +1078,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="section-num">02 / Transactions</span>
-      <span class="section-title">Sovereign Debt Finance</span>
+      <span class="section-title">Sovereign Blended Finance</span>
     </div>
 
     <div class="deals-scroller reveal" tabindex="0" role="region" aria-label="Scrollable list of transaction case studies">
@@ -1047,8 +1100,7 @@
             <div class="detail-value">US DFC · IDB</div>
           </div>
         </div>
-        <a class="deal-link" href="https://www.nature.org/en-us/newsroom/ecuador-announces-debt-conversion-for-amazon-conservation-tnc-nature-bonds/" target="_blank" rel="noopener">Press release ↗</a>
-         <a class="deal-link" href="https://www.nature.org/content/dam/tnc/nature/en/documents/t/n/tnc_Ecuador_case_study_ENGL.pdf" target="_blank" rel="noopener">Case study ↗</a>
+        <a class="deal-link" href="https://www.nature.org/en-us/newsroom/ecuador-announces-debt-conversion-for-amazon-conservation-tnc-nature-bonds/" target="_blank" rel="noopener">Read more ↗</a>
       </article>
 
       <article class="deal-card">
@@ -1058,7 +1110,7 @@
         </div>
         <div class="deal-country">Gabon</div>
         <h3 class="deal-subtitle">Blue Bonds · Ocean Conservation</h3>
-        <p class="deal-desc">First debt-for-nature conversion in mainland Africa. Refinanced $500M of sovereign bonds and unlocked $163M for marine conservation — protecting 30% of Gabon's ocean by 2030.</p>
+        <p class="deal-desc">First debt-for-nature conversion in mainland Africa. Unlocked $163M for marine conservation — protecting 30% of Gabon's ocean by 2030.</p>
         <div class="deal-meta">
           <div>
             <div class="detail-label">Lender</div>
@@ -1078,12 +1130,12 @@
           <div class="deal-year">2022</div>
         </div>
         <div class="deal-country">Barbados</div>
-        <h3 class="deal-subtitle">Ocean Conservation Sovereign Loan and Guarantee</h3>
-        <p class="deal-desc">First sovereign loan globally to include a natural disaster and pandemic clause post-COVID-19.Generated $50M+ for 15 years of marine conservation.</p>
+        <h3 class="deal-subtitle">Ocean Conservation Sovereign Loan</h3>
+        <p class="deal-desc">First sovereign loan globally to include a natural disaster and pandemic clause post-COVID-19. Generated $50M+ for 15 years of marine conservation.</p>
         <div class="deal-meta">
           <div>
             <div class="detail-label">Lenders</div>
-            <div class="detail-value">Credit Suisse (UBS) · CIBC</div>
+            <div class="detail-value">Credit Suisse · CIBC</div>
           </div>
           <div>
             <div class="detail-label">Credit Enhancers</div>
@@ -1108,12 +1160,12 @@
     <div class="exp-item reveal">
       <div>
         <div class="exp-period">May – Aug 2026</div>
-        <div class="exp-org">Fast Metals Inc.</div>
+        <div class="exp-org">FAST Metals Inc.</div>
         <div class="exp-loc">New York, NY</div>
       </div>
       <div>
         <div class="exp-role">Business Development &amp; Market Research Intern</div>
-        <p class="exp-body">Supporting an early-stage startup focused on critical minerals recovery from industrial waste, decarbonizing mining. Working on go-to-market strategy and structuring the next funding round.</p>
+        <p class="exp-body">Supporting a startup focused on critical minerals recovery from industrial waste, decarbonizing mining. Working on go-to-market strategy and supporting the structuring of the company's fundraising efforts.</p>
         <div class="tags">
           <span class="tag">Critical Minerals Recovery</span>
           <span class="tag">Go-to-Market Strategy</span>
@@ -1132,15 +1184,12 @@
         <div class="exp-role">Sustainable Debt Analyst</div>
         <p class="exp-body">Led financial modeling for $1.6B+ in sovereign blended finance transactions, supporting execution alongside multilaterals (IDB, US DFC), commercial lenders, and national governments from mandate through close. Built SPV cash flow waterfalls, debt sizing models, and investor return profiles. Engineered a Python pipeline automating sovereign bond data retrieval. Oversaw post-transaction SPV compliance and reserve monitoring.</p>
         <div class="tags">
-          <span class="tag">Liability Management</span>
-          <span class="tag">Macroeconomic Analysis</span>
-          <span class="tag">Financial Modeling</span>
+          <span class="tag">Blended Finance</span>
           <span class="tag">SPV Waterfalls</span>
           <span class="tag">Sovereign Debt</span>
           <span class="tag">Python</span>
           <span class="tag">Emerging Markets</span>
           <span class="tag">Credit Enhancement</span>
-          <span class="tag">Asset Management</span>
         </div>
       </div>
     </div>
@@ -1153,10 +1202,9 @@
       </div>
       <div>
         <div class="exp-role">Financial Specialist</div>
-        <p class="exp-body">Supported budgeting, forecasting, and reporting for $40M+ in multi-country funds across five TNC divisions. Automated financial workflows via SQL reducing processing time by 50%. Built reporting templates adopted organization-wide.</p>
+        <p class="exp-body">Led budgeting, forecasting, and reporting for $40M+ in multi-country funds across five TNC divisions. Automated financial workflows via SQL reducing processing time by 50%. Built reporting templates adopted organization-wide.</p>
         <div class="tags">
-          <span class="tag">Financial Planning & Analysis</span>
-          <span class="tag">Accounting</span>
+          <span class="tag">Fund Accounting</span>
           <span class="tag">SQL Automation</span>
           <span class="tag">US GAAP</span>
           <span class="tag">Forecasting</span>
@@ -1177,7 +1225,6 @@
           <span class="tag">DCF / LBO / IRR</span>
           <span class="tag">M&amp;A</span>
           <span class="tag">Capital Raise</span>
-           <span class="tag">Capital Structure</span>
           <span class="tag">Pitch Books</span>
         </div>
       </div>
@@ -1213,7 +1260,7 @@
     <div class="work-grid">
       <div class="work-card reveal">
         <div class="work-type">Research · Columbia University AC4</div>
-        <h3 class="work-title">Nuclear: Megatons to Megawatts — Economic Analysis</h3>
+        <h3 class="work-title">Megatons to Megawatts — Economic Analysis</h3>
         <p class="work-body">Evaluating the economic benefits of the 1993–2013 U.S.-Russia HEU Agreement and its implications for nuclear power as a clean energy transition pathway.</p>
         <a class="work-link" href="https://ac4.climate.columbia.edu/content/megatons-megawatts-evaluation-project" target="_blank" rel="noopener">Columbia AC4 project page ↗</a>
       </div>
@@ -1235,22 +1282,22 @@
       -->
       <div class="work-card placeholder reveal reveal-delay-2">
         <div class="work-type">Financial Model</div>
-        <h3 class="work-title">[Portfolio]</h3>
-        <p class="work-body">Coming soon</p>
+        <h3 class="work-title">[Upload your file to GitHub and replace href]</h3>
+        <p class="work-body">Add your Excel models and PDF papers here. Upload the file to your GitHub repo alongside index.html, then replace href="#" with the filename e.g. href="bess-model.xlsx"</p>
         <a class="work-link" href="#" aria-disabled="true">Coming soon</a>
       </div>
 
       <div class="work-card placeholder reveal reveal-delay-3">
-        <div class="work-type">Climate Policy Papers</div>
-        <h3 class="work-title">[Portfolio]</h3>
-        <p class="work-body>Coming soon</p>
+        <div class="work-type">Climate Policy Paper</div>
+        <h3 class="work-title">[Upload your file to GitHub and replace href]</h3>
+        <p class="work-body">Add your Excel models and PDF papers here. Upload the file to your GitHub repo alongside index.html, then replace href="#" with the filename e.g. href="bess-model.xlsx"</p>
         <a class="work-link" href="#" aria-disabled="true">Coming soon</a>
       </div>
 
       <div class="work-card placeholder reveal reveal-delay-4">
         <div class="work-type">Additional Work</div>
-        <h3 class="work-title">[Portfolio]</h3>
-        <p class="work-body"Coming soon</p>
+        <h3 class="work-title">[Upload your file to GitHub and replace href]</h3>
+        <p class="work-body">Add your Excel models and PDF papers here. Upload the file to your GitHub repo alongside index.html, then replace href="#" with the filename e.g. href="bess-model.xlsx"</p>
         <a class="work-link" href="#" aria-disabled="true">Coming soon</a>
       </div>
     </div>
@@ -1274,9 +1321,9 @@
       </div>
 
       <div class="edu-card reveal reveal-delay-1">
-        <div class="edu-inst">ITESM · Monterrey Institute of Technology and Higher Education</div>
+        <div class="edu-inst">ITESM · Monterrey Institute of Technology</div>
         <h3 class="edu-degree">B.Sc., Finance — Graduated with Honors</h3>
-        <p class="edu-sub">Mexico · 2011–2016 · Study Abroad: McMaster University, DeGroote Business School (Canada)</p>
+        <p class="edu-sub">Mexico City · 2011–2016 · Study Abroad: McMaster University, DeGroote Business School (Canada)</p>
         <span class="edu-badge">GPA 3.8 · Merit Scholarship</span>
       </div>
 
@@ -1297,7 +1344,7 @@
     <div class="research-strip reveal">
       <div>
         <div class="research-label">Current Research · Columbia AC4 · May–Aug 2026</div>
-        <h3 class="research-title">Nuclear: Megatons to Megawatts</h3>
+        <h3 class="research-title">Megatons to Megawatts</h3>
       </div>
       <div>
         <p class="research-body">Economic analysis of the 1993–2013 U.S.-Russia HEU Agreement — converting nuclear warheads into commercial reactor fuel — and its implications for nuclear power as a clean energy transition pathway.</p>
@@ -1346,13 +1393,13 @@
       <div class="skills-col reveal reveal-delay-2">
         <h3>Certifications</h3>
         <ul>
-          <li>CFA Certificate in Climate Risk, Valuation &amp;Investing (2026)</li>
+          <li>CFA Certificate in Climate &amp; Investing (2026)</li>
           <li>CFA Level I (2019)</li>
-          <li>Cornell University — Business Contracts (2024)</li>
-          <li>GRI Standards - Workshop completed (2026)</li>
-          <li>Iberoamerican University - Impact Investing Diploma (2018)</li>
+          <li>Cornell — Business Contracts (2024)</li>
+          <li>GRI Institute (2024)</li>
+          <li>Impact Investing Diploma (2018)</li>
           <li>AI Fellowship — Saturdays.AI (2020)</li>
-          <li>BEDU Data Analysis Bootcamp — SQL/Python/R</li>
+          <li>Data Analysis Bootcamp — SQL/Python/R</li>
         </ul>
       </div>
     </div>
@@ -1379,10 +1426,11 @@
 
       <ul class="member-list reveal reveal-delay-1">
         <li>CFA Society New York</li>
-        <li>Women of Renewable Industries and Sustainable Energy (WRISE) </li>
-        <li>Fixed Income Analyst Society (FIASI)</li>
+        <li>WRISE</li>
+        <li>Fixed Income Analyst Society</li>
         <li>Financial Women's Association</li>
         <li>Columbia Energy Association</li>
+        <li>Young Professionals in Energy</li>
       </ul>
     </div>
   </div>
@@ -1401,7 +1449,7 @@
       <div class="hobby-card reveal">
         <span class="hobby-icon">🎾</span>
         <h3 class="hobby-title">Squash</h3>
-        <p class="hobby-body">Fast-paced, strategic, relentless.</p>
+        <p class="hobby-body">Competitive, strategic, relentless.</p>
       </div>
       <div class="hobby-card reveal reveal-delay-1">
         <span class="hobby-icon">🏃</span>
@@ -1594,7 +1642,78 @@
     sections.forEach(function(s){ navObserver.observe(s); });
   })();
 
-  // ===== Back to top =====
+  // ===== Profile photo drag-to-reposition =====
+  (function(){
+    var circle = document.getElementById('profileCircle');
+    var img = document.getElementById('profileImg');
+    var hint = document.getElementById('profileHint');
+    if(!circle || !img) return;
+
+    var posX = 50, posY = 20;
+    var scale = 1;
+    var dragging = false;
+    var startX, startY, startPosX, startPosY;
+
+    function applyPos(){
+      img.style.objectPosition = posX + '% ' + posY + '%';
+      img.style.transform = 'scale(' + scale + ')';
+    }
+
+    circle.addEventListener('mousedown', function(e){
+      dragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      startPosX = posX;
+      startPosY = posY;
+      hint.textContent = 'Release to save position';
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', function(e){
+      if(!dragging) return;
+      var dx = (e.clientX - startX) / circle.offsetWidth * 100 * -1;
+      var dy = (e.clientY - startY) / circle.offsetHeight * 100 * -1;
+      posX = Math.min(100, Math.max(0, startPosX + dx));
+      posY = Math.min(100, Math.max(0, startPosY + dy));
+      applyPos();
+    });
+
+    window.addEventListener('mouseup', function(){
+      if(dragging){
+        dragging = false;
+        hint.textContent = 'Drag to reposition · scroll to zoom';
+      }
+    });
+
+    circle.addEventListener('wheel', function(e){
+      e.preventDefault();
+      scale = Math.min(3, Math.max(1, scale - e.deltaY * 0.001));
+      applyPos();
+    }, { passive: false });
+
+    circle.addEventListener('touchstart', function(e){
+      var t = e.touches[0];
+      dragging = true;
+      startX = t.clientX; startY = t.clientY;
+      startPosX = posX; startPosY = posY;
+      e.preventDefault();
+    }, { passive: false });
+
+    circle.addEventListener('touchmove', function(e){
+      if(!dragging) return;
+      var t = e.touches[0];
+      var dx = (t.clientX - startX) / circle.offsetWidth * 100 * -1;
+      var dy = (t.clientY - startY) / circle.offsetHeight * 100 * -1;
+      posX = Math.min(100, Math.max(0, startPosX + dx));
+      posY = Math.min(100, Math.max(0, startPosY + dy));
+      applyPos();
+      e.preventDefault();
+    }, { passive: false });
+
+    circle.addEventListener('touchend', function(){ dragging = false; });
+  })();
+
+
   (function(){
     var btn = document.getElementById('toTop');
     window.addEventListener('scroll', function(){
