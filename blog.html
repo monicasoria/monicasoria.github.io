@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Monica Soria</title>
+<meta name="description" content="Original perspectives on climate finance, sovereign debt, clean energy markets, and the economics of decarbonization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --c-0:#0d0d0d;
+    --c-1:#1f1f1f;
+    --c-2:#3a3a3a;
+    --c-3:#6b6b6b;
+    --c-4:#a8a8a8;
+    --c-5:#d4d4d4;
+    --c-6:#ebebeb;
+    --c-7:#f7f7f7;
+    --c-8:#ffffff;
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --nav-h: 76px;
+    --maxw: 1180px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth; scroll-padding-top: var(--nav-h);}
+
+  body{
+    font-family:var(--sans);
+    color:var(--c-0);
+    background:var(--c-8);
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--c-0); color:var(--c-8);}
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  /* ===== Custom cursor ===== */
+  .cursor-dot{
+    position:fixed;
+    top:0; left:0;
+    width:10px; height:10px;
+    border-radius:50%;
+    background:var(--c-0);
+    pointer-events:none;
+    z-index:9999;
+    mix-blend-mode:difference;
+    transform:translate(-50%,-50%);
+    transition: width .2s ease, height .2s ease, background .2s ease;
+    will-change:transform;
+  }
+  .cursor-dot.active{
+    width:36px; height:36px;
+    background:var(--c-8);
+  }
+  @media (hover:none), (pointer:coarse){
+    .cursor-dot{display:none;}
+  }
+
+  /* ===== Nav ===== */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    height:var(--nav-h);
+    display:flex;
+    align-items:center;
+    background:rgba(255,255,255,.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--c-6);
+    z-index:1000;
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:21px;
+    letter-spacing:.04em;
+    text-decoration:none;
+    color:var(--c-0);
+    font-weight:500;
+  }
+  .back-link{
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--c-3);
+    position:relative;
+    padding-bottom:6px;
+    transition:color .25s ease;
+    border-bottom:1px solid transparent;
+  }
+  .back-link:hover{
+    color:var(--c-0);
+    border-bottom-color:var(--c-0);
+  }
+
+  /* ===== Hero ===== */
+  .blog-hero{
+    padding:calc(var(--nav-h) + 100px) 0 80px;
+    border-bottom:1px solid var(--c-6);
+  }
+  .section-num{
+    font-family:var(--serif);
+    font-size:14px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--c-4);
+    margin-bottom:24px;
+    display:block;
+  }
+  .blog-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(40px, 6vw, 72px);
+    line-height:1.1;
+    letter-spacing:-.01em;
+    max-width:880px;
+    margin-bottom:24px;
+  }
+  .blog-sub{
+    font-size:18px;
+    color:var(--c-2);
+    max-width:580px;
+    font-weight:300;
+  }
+
+  /* ===== Posts ===== */
+  .posts{
+    padding:80px 0 140px;
+  }
+  .post{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap:48px;
+    padding:48px 0;
+    border-bottom:1px solid var(--c-6);
+    transition: opacity .3s ease;
+  }
+  .post:first-child{ border-top:1px solid var(--c-6); }
+
+  .post-date{
+    font-size:13px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--c-4);
+  }
+  .post-tag{
+    display:inline-block;
+    margin-top:12px;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--c-3);
+    border:1px solid var(--c-6);
+    padding:6px 12px;
+  }
+  .post-title{
+    font-family:var(--serif);
+    font-size:30px;
+    font-weight:500;
+    margin-bottom:14px;
+    transition:opacity .25s ease;
+  }
+  .post-excerpt{
+    font-size:15.5px;
+    color:var(--c-2);
+    max-width:640px;
+    margin-bottom:18px;
+  }
+  .post-link{
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-bottom:1px solid var(--c-0);
+    padding-bottom:2px;
+    transition:opacity .25s ease;
+  }
+  .post:hover .post-title{ opacity:.6; }
+  .post-link:hover{ opacity:.5; }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ===== Back to top ===== */
+  .to-top{
+    position:fixed;
+    right:32px;
+    bottom:32px;
+    width:48px; height:48px;
+    border-radius:50%;
+    background:var(--c-0);
+    color:var(--c-8);
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:18px;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition: opacity .35s ease, transform .35s ease, visibility .35s;
+    z-index:900;
+  }
+  .to-top.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .to-top:hover{ background:var(--c-2); }
+
+  footer{
+    background:var(--c-0);
+    color:var(--c-5);
+    padding:32px 0;
+    font-size:12px;
+    letter-spacing:.06em;
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid var(--c-2);
+  }
+  footer a{ text-decoration:underline; text-underline-offset:3px; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px){
+    .wrap{ padding:0 24px; }
+    .blog-hero{ padding:calc(var(--nav-h) + 60px) 0 56px; }
+    .posts{ padding:56px 0 90px; }
+    .post{
+      grid-template-columns:1fr;
+      gap:16px;
+      padding:36px 0;
+    }
+    .post-title{ font-size:24px; }
+    footer{ flex-direction:column; gap:8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation:none !important;
+      transition:none !important;
+    }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo">M. Soria</a>
+    <a href="index.html" class="back-link">← Back to portfolio</a>
+  </nav>
+</header>
+
+<section class="blog-hero">
+  <div class="wrap">
+    <span class="section-num reveal">Blog</span>
+    <h1 class="blog-title reveal">Thinking out loud on energy, finance, and the transition</h1>
+    <p class="blog-sub reveal">Original perspectives on climate finance, sovereign debt, clean energy markets, and the economics of decarbonization.</p>
+  </div>
+</section>
+
+<section class="posts">
+  <div class="wrap">
+
+    <!--
+      HOW TO ADD A NEW BLOG POST:
+      1. Duplicate the entire <article class="post reveal"> ... </article> block below.
+      2. Update the date, tag, title, and excerpt text.
+      3. Either link directly to an external post (e.g. Medium, Substack) via post-link href,
+         or create a new local HTML page (e.g. post-1.html) using this same header/footer
+         and link to it instead.
+      4. Place the new <article> block ABOVE the existing ones so posts stay newest-first.
+    -->
+    <article class="post reveal">
+      <div>
+        <div class="post-date">Coming soon</div>
+        <span class="post-tag">Climate Finance</span>
+      </div>
+      <div>
+        <h2 class="post-title">First post — coming soon</h2>
+        <p class="post-excerpt">This is a placeholder post. Replace this block with your first piece on climate finance, sovereign debt, clean energy markets, or the economics of decarbonization. Duplicate this article block to add more posts, keeping the newest at the top.</p>
+        <a class="post-link" href="#" aria-disabled="true">Read more ↗</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+    <span>© 2026 Monica Soria</span>
+    <span><a href="index.html">Portfolio</a> · <a href="https://linkedin.com/in/monicalonsoria" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+  // ===== Custom cursor =====
+  (function(){
+    var dot = document.getElementById('cursorDot');
+    var mouseX = 0, mouseY = 0, dotX = 0, dotY = 0;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if(!reduceMotion){
+      window.addEventListener('mousemove', function(e){
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animateDot(){
+        dotX += (mouseX - dotX) * 0.18;
+        dotY += (mouseY - dotY) * 0.18;
+        dot.style.transform = 'translate(' + dotX + 'px,' + dotY + 'px) translate(-50%,-50%)';
+        requestAnimationFrame(animateDot);
+      }
+      animateDot();
+
+      document.querySelectorAll('a, button, .post').forEach(function(el){
+        el.addEventListener('mouseenter', function(){ dot.classList.add('active'); });
+        el.addEventListener('mouseleave', function(){ dot.classList.remove('active'); });
+      });
+    } else {
+      dot.style.display = 'none';
+    }
+  })();
+
+  // ===== Scroll reveal =====
+  (function(){
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(function(el){ observer.observe(el); });
+  })();
+
+  // ===== Back to top =====
+  (function(){
+    var btn = document.getElementById('toTop');
+    window.addEventListener('scroll', function(){
+      if(window.scrollY > 600){
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+    btn.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>
+
+</body>
+</html>
